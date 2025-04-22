@@ -10,5 +10,15 @@ export default function ProtectedLayout() {
     // in the headless Node process that the pages are rendered in.
     return <Redirect href="/login" />;
   }
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name="modal-search"
+        options={{
+          presentation: "card",
+          animation: "fade",
+        }}
+      />
+    </Stack>
+  );
 }

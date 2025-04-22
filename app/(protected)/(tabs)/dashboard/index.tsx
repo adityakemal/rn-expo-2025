@@ -1,3 +1,6 @@
+import ContainerWrapper from "@/components/ContainerWrapper";
+import CategoryList from "@/components/Menu/CategoryList";
+import MenuList from "@/components/Menu/MenuList";
 import { useAuth } from "@/stores/auth";
 import { Link, useRouter } from "expo-router";
 import React from "react";
@@ -8,7 +11,7 @@ const Dashboard = () => {
   const { token } = useAuth();
 
   return (
-    <View>
+    <ContainerWrapper title="Dashboard" className="">
       <Text>Dashboard saya</Text>
       <Text>Dashboard saya</Text>
       <Text>Dashboard saya</Text>
@@ -18,7 +21,8 @@ const Dashboard = () => {
       <Link href={"/dashboard/12345"} asChild>
         <Button title="go to detail ssssssss 123456" />
       </Link>
-    </View>
+      <Text>okegas</Text>
+    </ContainerWrapper>
   );
 };
 

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { Image } from "expo-image";
 import { useOrientation } from "@/hooks/useOrientation";
-import Animated from "react-native-reanimated";
+import Animated, { FadeIn } from "react-native-reanimated";
 import { Link } from "expo-router";
 
 const blurhash =
@@ -20,6 +20,7 @@ const blurhash =
 const ProductItem = React.memo(({ title, price, image, desc, id }: any) => {
   return (
     <View
+      // entering={FadeIn.duration(700).delay(100 * parseInt(id))}
       className=" border  rounded-xl overflow-hidden"
       style={{ margin: 10 }}>
       <Link
@@ -29,9 +30,9 @@ const ProductItem = React.memo(({ title, price, image, desc, id }: any) => {
         }}
         asChild>
         <TouchableOpacity className="w-full aspect-square border-b ">
-          <Animated.Image
-            //   placeholder={{ blurhash }}
-            sharedTransitionTag="prodImageTransTag"
+          <Image
+            placeholder={{ blurhash }}
+            // sharedTransitionTag="prodImageTransTag"
             //   placeholder={require('../assets/placeholder.png')} // ← gambar default kecil
             key={`${id}-${image}`}
             source={{ uri: image }}
@@ -106,9 +107,11 @@ export default function FlashlistTest() {
         }}
         onEndReachedThreshold={0.5}
         ListFooterComponent={
-          query.isFetchingNextPage ? <ActivityIndicator /> : null
+          query.isFetchingNextPage || query.isLoading ? (
+            <ActivityIndicator />
+          ) : null
         }
-        numColumns={isLandscape ? 6 : 2}
+        numColumns={isLandscape ? 5 : 2}
         contentContainerStyle={{ padding: 10 }}
       />
     </View>

@@ -11,6 +11,8 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import useDeviceType from "@/hooks/useDeviceType";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 const queryClient = new QueryClient({
   // defaultOptions: {
@@ -24,6 +26,24 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   useReactQueryDevTools(queryClient);
+  const { isPhone } = useDeviceType();
+
+  const { restore } = useAuth();
+
+  useEffect(() => {
+    restore(); // restore session saat app start
+  }, []);
+
+  // LOCK ORIENTATION IF it's PHONE
+  useEffect(() => {
+    if (isPhone) {
+      ScreenOrientation.lockAsync(
+        ScreenOrientation.OrientationLock.PORTRAIT_UP
+      );
+    } else {
+      ScreenOrientation.unlockAsync(); // allow all orientations
+    }
+  }, [isPhone]);
 
   const [loaded] = useFonts({
     GilroyRegular: require("../assets/fonts/Gilroy-Regular.ttf"),
@@ -31,12 +51,6 @@ export default function RootLayout() {
     GilroyBold: require("../assets/fonts/Gilroy-Bold.ttf"),
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
-
-  const { restore } = useAuth();
-
-  useEffect(() => {
-    restore(); // restore session saat app start
-  }, []);
 
   useEffect(() => {
     if (loaded) {
@@ -54,15 +68,15 @@ export default function RootLayout() {
         <SafeAreaProvider>
           <GestureHandlerRootView>
             <BottomSheetModalProvider>
-              <StatusBar style="auto" />
+              <StatusBar style="dark" />
               {/* <Slot /> */}
-              <Stack>
-                <Stack.Screen name="login" options={{ headerShown: false }} />
-                <Stack.Screen
+              <Slot screenOptions={{ headerShown: true }}>
+                {/* <Stack.Screen name="login" options={{ headerShown: false }} /> */}
+                {/* <Stack.Screen
                   name="(protected)"
                   options={{ headerShown: false, title: "" }}
-                />
-                <Stack.Screen
+                /> */}
+                {/* <Stack.Screen
                   name="modal"
                   options={{
                     headerShown: true,
@@ -78,8 +92,8 @@ export default function RootLayout() {
                   name="image-shared"
                   options={{ headerShown: false }}
                 />
-                <Stack.Screen name="+not-found" />
-              </Stack>
+                <Stack.Screen name="+not-found" /> */}
+              </Slot>
             </BottomSheetModalProvider>
           </GestureHandlerRootView>
         </SafeAreaProvider>

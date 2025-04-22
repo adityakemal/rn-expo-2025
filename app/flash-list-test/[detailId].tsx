@@ -25,6 +25,7 @@ export default function DetailProduct() {
     <ScrollView className="p-5">
       <View className="w-full aspect-square border-b ">
         <Animated.Image
+          sharedTransitionTag="prodImageTransTag"
           //   placeholder={{ blurhash }}
           //   placeholder={require('../assets/placeholder.png')} // ← gambar default kecil
           source={{ uri: image }}
