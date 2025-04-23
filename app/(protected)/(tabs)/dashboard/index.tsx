@@ -1,4 +1,5 @@
 import ContainerWrapper from "@/components/ContainerWrapper";
+import DashboardContainer from "@/components/Dashboard/DashboardContainer";
 import CategoryList from "@/components/Menu/CategoryList";
 import MenuList from "@/components/Menu/MenuList";
 import { useAuth } from "@/stores/auth";
@@ -11,8 +12,9 @@ const Dashboard = () => {
   const { token } = useAuth();
 
   return (
-    <ContainerWrapper title="Dashboard" className="">
-      <Text>Dashboard saya</Text>
+    <ContainerWrapper title="Dashboard">
+      <DashboardContainer />
+      {/* <Text>Dashboard saya</Text>
       <Text>Dashboard saya</Text>
       <Text>Dashboard saya</Text>
       <Text>Dashboard saya</Text>
@@ -21,7 +23,7 @@ const Dashboard = () => {
       <Link href={"/dashboard/12345"} asChild>
         <Button title="go to detail ssssssss 123456" />
       </Link>
-      <Text>okegas</Text>
+      <Text>okegas</Text> */}
     </ContainerWrapper>
   );
 };

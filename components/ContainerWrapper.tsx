@@ -3,7 +3,7 @@ import {
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
 import Header from "./Header";
-import { Text, View } from "react-native";
+import { Platform, Text, View } from "react-native";
 import clsx from "clsx";
 import useDeviceType from "@/hooks/useDeviceType";
 
@@ -31,9 +31,11 @@ export default function ContainerWrapper({
     <SafeAreaView
       edges={["bottom"]}
       className="flex-1 bg-white"
-      style={{
-        paddingBottom: bottom,
-      }}>
+      style={Platform.select({
+        ios: {
+          paddingBottom: bottom + 14,
+        },
+      })}>
       <View className={clsx("flex-1", className)}>
         {headerShown && (
           <Header
