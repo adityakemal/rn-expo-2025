@@ -25,7 +25,7 @@ export default function detail() {
           style={{ width: 300, height: 300, borderRadius: 16 }}
         /> */}
         <Animated.Image
-          source={require("../../assets/images/partial-react-logo.png")}
+          source={require("../../assets/images/icon.png")}
           sharedTransitionTag={`image-${123}`}
           style={{ width: 300, height: 300, borderRadius: 12 }}
         />

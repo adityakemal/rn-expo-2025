@@ -1,9 +1,9 @@
-import { useAuth } from "@/stores/auth";
+import { useAuthStore } from "@/stores/auth";
 import { Redirect, Slot, Stack } from "expo-router";
 import React from "react";
 
 export default function ProtectedLayout() {
-  const { token } = useAuth();
+  const { token } = useAuthStore();
 
   if (!token) {
     // On web, static rendering will stop here as the user is not authenticated

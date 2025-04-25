@@ -20,7 +20,7 @@ export default function MenuList() {
       <FlashList
         data={[...Array(10).keys()]} // Render 10 skeleton items
         estimatedItemSize={200}
-        numColumns={isPhone ? 3 : isLandscape ? 7 : 4}
+        numColumns={isPhone ? 3 : isLandscape ? 5 : 4}
         contentContainerStyle={{ paddingHorizontal: 10 }}
         keyExtractor={(item) => item.toString()}
         renderItem={() => (
@@ -43,7 +43,7 @@ export default function MenuList() {
     <FlashList
       data={menus}
       estimatedItemSize={200}
-      numColumns={isPhone ? 3 : isLandscape ? 7 : 4}
+      numColumns={isPhone ? 3 : isLandscape ? 5 : 4}
       contentContainerStyle={{ paddingHorizontal: 10, paddingBottom: 10 }}
       keyExtractor={(item: any) => item.idMeal}
       // showsVerticalScrollIndicator={false}

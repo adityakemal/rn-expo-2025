@@ -1,16 +1,11 @@
+import { axiosInstance, fetchGet } from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-export const fetchCategories = async () => {
-  const res = await axios.get(
-    "https://www.themealdb.com/api/json/v1/1/categories.php"
-  );
-  return res.data.categories;
-};
 
-export function useCategories() {
+export function useGetCategory() {
   return useQuery({
     queryKey: ["categories"],
-    queryFn: fetchCategories,
+    queryFn: (params) => fetchGet("/product/category", params),
   });
 }
 

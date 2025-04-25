@@ -1,25 +1,20 @@
 import ContainerWrapper from "@/components/ContainerWrapper";
 import CategoryList from "@/components/Menu/CategoryList";
 import MenuList from "@/components/Menu/MenuList";
-import BottomSheetCustom from "@/components/ui/BottomSheetCustom";
-import { fontSize } from "@/lib/util";
-import { useAuth } from "@/stores/auth";
-import { Link, useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Text, View } from "react-native";
 
 const Menu = () => {
-  const [isBottomSheetVisible, setBottomSheetVisible] = useState(false);
-
-  const handleCloseBottomSheet = () => {
-    setBottomSheetVisible(false);
-  };
-
   return (
-    <ContainerWrapper title="Menu" hideBack className="">
-      <CategoryList />
-      <MenuList />
+    <ContainerWrapper title="Menu" hideBack className="" headerShown={false}>
+      <View className="flex-row flex-1 gap-5 p-5">
+        <View className="basis-4/6 rounded-xl flex-1 gap-5 border">
+          <MenuList />
+        </View>
+        <View className="basis-2/6 flex-1 border p-5">
+          <Text className="border">Yes</Text>
+        </View>
+      </View>
     </ContainerWrapper>
   );
 };

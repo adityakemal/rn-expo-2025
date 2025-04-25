@@ -9,7 +9,7 @@ type AuthState = {
   restore: () => void;
 };
 
-export const useAuth = create<AuthState>((set) => ({
+export const useAuthStore = create<AuthState>((set) => ({
   token: null,
   isLoading: true,
 

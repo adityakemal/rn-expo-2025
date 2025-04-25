@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { useCategories } from "@/api/useMenuApi";
+// import { useCategories } from "@/api/useMenuApi";
 import clsx from "clsx";
 import { Image } from "expo-image";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useMenuStores } from "@/stores/menu";
+import { useGetCategory } from "@/api/useMenuApi";
 
 export default function CategoryList() {
-  const { data: categories, isLoading, isError } = useCategories();
+  const { data: categories, isLoading, isError } = useGetCategory();
 
   if (isError)
     return <Text className="px-4 text-red-500">Failed to load categories</Text>;
@@ -23,7 +24,7 @@ export default function CategoryList() {
   };
 
   return (
-    <View className=" border-neutral-200">
+    <View className="">
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -47,7 +48,7 @@ export default function CategoryList() {
                   <Animated.View
                     entering={FadeInDown.delay(100 * idx).springify()}
                     className={clsx(
-                      " z-1 h-16 w-16 rounded-full mb-1  overflow-hidden  flex items-center justify-center border border-neutral-200 ",
+                      " z-1 h-16 w-16 rounded-full mb-1  overflow-hidden  flex items-center justify-center border bg-inherit border-neutral-200 ",
                       isActiveMenu && "border-4 border-yellow-300   "
                     )}>
                     <Image

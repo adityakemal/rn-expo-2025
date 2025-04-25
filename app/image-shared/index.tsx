@@ -33,7 +33,7 @@ export default function ImageShared() {
               style={{ width: 150, height: 150, borderRadius: 12 }}
             /> */}
             <Animated.Image
-              source={require("../../assets/images/partial-react-logo.png")}
+              source={require("../../assets/images/icon.png")}
               sharedTransitionTag={`image-${123}`}
               style={{ width: 150, height: 150, borderRadius: 12 }}
             />

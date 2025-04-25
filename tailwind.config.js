@@ -1,30 +1,41 @@
-/** @type {import('tailwindcss').Config} */
+import gluestackPlugin from '@gluestack-ui/nativewind-utils/tailwind-plugin';
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  // NOTE: Update this to include the paths to all of your component files.
-  content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}",],
-  presets: [require("nativewind/preset")],
+  content: ["app/**/*.{tsx,jsx,ts,js}", "components/**/*.{tsx,jsx,ts,js}"],
+  presets: [require('nativewind/preset')],
   theme: {
     extend: {
       colors: {
-        primary: "#4f46e5",
-        secondary: "#ec4899",
-        background: "#f9fafb",
+        primary: "#fd0;",
+        // secondary: "#ec4899",
+        // background: "#f9fafb",
       },
-      fontFamily: {
-        mono: "SpaceMono",
-        gilroy: "GilroyRegular",
-        'gilroy-light': "GilroyLight",
-        'gilroy-bold': "GilroyBold",
+      mono: "SpaceMono",
+      gilroy: "GilroyRegular",
+      'gilroy-light': "GilroyLight",
+      'gilroy-bold': "GilroyBold",
 
-        // system: platformSelect({
-        //   ios: "Georgia",
-        //   android: "sans-serif",
-        //   default: "ui-sans-serif",
-        // }),
-      },
 
     },
+    fontFamily: {
+      mono: "SpaceMono",
+      gilroy: "GilroyRegular",
+      'gilroy-light': "GilroyLight",
+      'gilroy-bold': "GilroyBold"
+    },
+    boxShadow: {
+      'hard-1': '-2px 2px 8px 0px rgba(38, 38, 38, 0.20)',
+      'hard-2': '0px 3px 10px 0px rgba(38, 38, 38, 0.20)',
+      'hard-3': '2px 2px 8px 0px rgba(38, 38, 38, 0.20)',
+      'hard-4': '0px -3px 10px 0px rgba(38, 38, 38, 0.20)',
+      'hard-5': '0px 2px 10px 0px rgba(38, 38, 38, 0.10)',
+      'soft-1': '0px 0px 10px rgba(38, 38, 38, 0.1)',
+      'soft-2': '0px 0px 20px rgba(38, 38, 38, 0.2)',
+      'soft-3': '0px 0px 30px rgba(38, 38, 38, 0.1)',
+      'soft-4': '0px 0px 40px rgba(38, 38, 38, 0.1)',
+    },
+
   },
   plugins: [],
-}
+};

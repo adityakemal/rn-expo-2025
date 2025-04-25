@@ -1,11 +1,11 @@
-import { useAuth } from "@/stores/auth";
+import { useAuthStore } from "@/stores/auth";
 import { useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const Setting = () => {
   const router = useRouter();
-  const { token, logout } = useAuth();
+  const { token, logout } = useAuthStore();
   return (
     <View>
       <Text>Setting</Text>

@@ -1,4 +1,5 @@
 import { useFonts } from "expo-font";
+import "@/global.css";
 import { Slot, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
@@ -6,7 +7,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "../global.css";
-import { useAuth } from "@/stores/auth";
+import { useAuthStore } from "@/stores/auth";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
@@ -28,7 +29,7 @@ export default function RootLayout() {
   useReactQueryDevTools(queryClient);
   const { isPhone } = useDeviceType();
 
-  const { restore } = useAuth();
+  const { restore } = useAuthStore();
 
   useEffect(() => {
     restore(); // restore session saat app start

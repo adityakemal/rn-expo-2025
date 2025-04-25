@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 const History = () => {
+  const [isBottomSheetVisible, setBottomSheetVisible] = useState(false);
+
+  const handleCloseBottomSheet = () => {
+    setBottomSheetVisible(false);
+  };
+
   return (
     <View>
       <Text>History</Text>
